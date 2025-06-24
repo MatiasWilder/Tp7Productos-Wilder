@@ -1,23 +1,24 @@
-import { useState } from 'react'
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './App.css'
+import Home from './pages/Home';
+import QuienesSomos from './pages/QuienesSomos';
+import Contacto from './pages/Contacto';
+import Productos from './pages/Productos';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={</layout>}></Route>
-        <Route path="/Home" element={</Home>}></Route>
-        <Route path="/Productos" element={</Productos>}></Route>
-        <Route path="/QuienesSomos" element={</QuienesSomos>}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/QuienesSomos" element={<QuienesSomos />} />
+        <Route path="/Productos" element={<Productos />} />
+        <Route path="/Contacto" element={<Contacto />} />
       </Routes>
     </BrowserRouter>
-    </>
-  )
+  );
 }
 
 export default App;
