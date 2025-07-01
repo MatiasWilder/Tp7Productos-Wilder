@@ -4,10 +4,14 @@ import QuienesSomos from './pages/QuienesSomos';
 import Contacto from './pages/Contacto';
 import Productos from './pages/Productos';
 import Nav from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
 
   return (
+    <>
+    <Nav/>
+    <div>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,6 +20,9 @@ function App() {
         <Route path="/Contacto" element={<Contacto />} />
       </Routes>
     </BrowserRouter>
+    </div>
+    <Footer/>
+    </>
   );
 }
 
