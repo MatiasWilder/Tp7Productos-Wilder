@@ -10,18 +10,17 @@ function App() {
 
   return (
     <>
-    <Nav/>
-    <div>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/QuienesSomos" element={<QuienesSomos />} />
-        <Route path="/Productos" element={<Productos />} />
-        <Route path="/Contacto" element={<Contacto />} />
-      </Routes>
-    </BrowserRouter>
-    </div>
-
+      <Nav/>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/QuienesSomos" element={<QuienesSomos />} />
+            <Route path="/Productos" element={<Productos />} />
+            <Route path="/Contacto" element={<Contacto />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
     </>
   );
 }
