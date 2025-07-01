@@ -4,7 +4,7 @@ import QuienesSomos from './pages/QuienesSomos';
 import Contacto from './pages/Contacto';
 import Productos from './pages/Productos';
 import Nav from './components/NavBar';
-import Footer from './components/Footer';
+
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     </div>
-    <Footer/>
+
     </>
   );
 }
