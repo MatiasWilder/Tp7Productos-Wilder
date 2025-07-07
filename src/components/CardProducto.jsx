@@ -1,30 +1,32 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './CardProducto.css';
 
-function CardProducto() {
-  const [productos, setProductos] = useState([]);
-
-  useEffect(() => {
-    axios.get('https://dummyjson.com/products?limit=8')
-      .then((res) => {
-        setProductos(res.data.products);
-        setError(null);
-      })
-  }, []);
+function CardProducto({ producto }) {
+  if (!producto) {
+    return <div className="card-placeholder">Producto no disponible</div>;
+  }
 
   return (
-    <div className="card-container">
-
-      {productos.map(producto => (
-        <div className="card" key={producto.id}>
-          <img src={producto.thumbnail} alt={producto.title} />
-          <h3>{producto.title}</h3>
-          <p><strong>${producto.price}</strong></p>
-          <p className="card-category">{producto.category}</p>
-          <button>Ver más</button>
-        </div>
-      ))}
+    <div className="card border rounded-lg shadow-md overflow-hidden bg-white">
+      {}
+      <img
+        src={producto.image}
+        alt={producto.title}
+        className="w-full h-48 object-contain p-4"
+      />
+      <div className="p-4">
+        <h3 className="text-lg font-semibold mb-2 truncate">
+          <Link to={`/productos/${producto.id}`} className="hover:text-blue-600">
+            {producto.title}
+          </Link>
+        </h3>
+        <p className="text-gray-800 font-bold mb-1">${producto.price}</p>
+        <p className="text-sm text-gray-500 capitalize mb-3">{producto.category}</p>
+        <Link to={`/productos/${producto.id}`} className="block w-full text-center bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors">
+          Ver más
+        </Link>
+      </div>
     </div>
   );
 }
