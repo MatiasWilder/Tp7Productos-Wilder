@@ -36,27 +36,27 @@ function Productos() {
 
   if (loading) {
     return (
-      <div className="productos-container text-center py-8">
-        <p className="text-xl text-gray-700">Cargando productos...</p>
+      <div className="productos-container">
+        <p className="text-xl">Cargando productos...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="productos-container text-center py-8">
-        <p className="text-xl text-red-600">{error}</p>
+      <div className="productos-container">
+        <p className="text-xl">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="productos-container p-4">
-      <h1 className="productos-title text-3xl font-bold mb-6 text-center">
+    <div className="productos-container">
+      <h1 className="productos-title">
         {idCategoria ? `Productos de ${idCategoria.charAt(0).toUpperCase() + idCategoria.slice(1)}` : 'Todos los Productos'}
       </h1>
 
-      <div className="productos-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="productos-grid">
         {productos.map(producto => (
           <CardProducto key={producto.id} producto={producto} />
         ))}

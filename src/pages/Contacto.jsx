@@ -7,19 +7,19 @@ function Contacto() {
       <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '400px' }}>
         <label>
           Nombre:
-          <input type="text" placeholder="Ingresa tu nombre" required />
+          <input type="text" required />
         </label>
         <label>
           Apellido:
-          <input type="text" placeholder="Ingresa tu apellido" required />
+          <input type="text" required />
         </label>
         <label>
           Email:
-          <input type="email" placeholder="Ingresa tu email" required />
+          <input type="email" required />
         </label>
         <label>
           Número de teléfono:
-          <input type="tel" placeholder="Ingresa tu número" />
+          <input type="tel" required />
         </label>
         <button type="submit">Enviar</button>
       </form>
