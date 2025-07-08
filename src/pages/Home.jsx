@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CardProducto from '../components/CardProducto';
+import Carrousel from '../components/CarrouselHome';
 
 
 function Home() {
@@ -42,7 +43,8 @@ function Home() {
             <CardProducto key={producto.id} producto={producto} />
           ))}
         </div>
-      )}      
+      )}
+      <Carrousel></Carrousel>
     </div>
   );
 }

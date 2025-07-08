@@ -1,0 +1,11 @@
+.Carrousel {
+    border-radius: 50%;
+    text-align: center;
+    margin: auto;
+}
+.Carrousel img {
+    width: 250px;
+    height: auto;
+    margin-Top: 1rem;
+    border-radius:20px;
+}
