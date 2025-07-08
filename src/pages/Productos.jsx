@@ -52,7 +52,7 @@ function Productos() {
 
   return (
     <div className="productos-container">
-      <h1 className="productos-title">
+      <h1 className="productos-titulo">
         {idCategoria ? `Productos de ${idCategoria.charAt(0).toUpperCase() + idCategoria.slice(1)}` : 'Todos los Productos'}
       </h1>
 
