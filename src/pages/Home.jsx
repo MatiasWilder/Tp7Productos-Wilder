@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CardProducto from '../components/CardProducto';
@@ -25,26 +26,29 @@ function Home() {
   }, []);
 
   return (
-    <div className="home-container">
-      <h1 className="text-4xl">Bienvenido a TP Ventas</h1>
-      <p className="text-xl">Explora nuestros productos destacados:</p>
+    <div className="home-container" style={{ padding: '2rem' }}>
+      <h1 style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>Bienvenido a TP Ventas</h1>
+      <Carrousel />
+      <p style={{ fontSize: '1.2rem', marginBottom: '2rem' }}>Explora nuestros productos destacados:</p>
 
       {loadingProductos ? (
-        <div className="productos-destacados">
-          <p className="text-xl">Cargando productos destacados...</p>
-        </div>
+        <p>Cargando productos destacados...</p>
       ) : errorProductos ? (
-        <div className="productos-destacados">
-          <p className="text-xl">{errorProductos}</p>
-        </div>
+        <p>{errorProductos}</p>
       ) : (
-        <div className="productos-destacados">
+        <div className="card-container">
           {productosDestacados.map(producto => (
-            <CardProducto key={producto.id} producto={producto} />
+            <div className="card" key={producto.id}>
+              <img src={producto.image} alt={producto.title} />
+              <h3>{producto.title}</h3>
+              <p><strong>${producto.price}</strong></p>
+              <p className="card-category">{producto.category}</p>
+              <button>Ver más</button>
+            </div>
           ))}
         </div>
       )}
-      <Carrousel></Carrousel>
+
     </div>
   );
 }

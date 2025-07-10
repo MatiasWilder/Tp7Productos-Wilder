@@ -1,11 +1,13 @@
 .Carrousel {
-    border-radius: 50%;
-    text-align: center;
-    margin: auto;
+  max-width: 800px;
+  margin: 3rem auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
 .Carrousel img {
-    width: 500px;
-    height: auto;
-    margin-Top: 1rem;
-    border-radius: 15px;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
 }
