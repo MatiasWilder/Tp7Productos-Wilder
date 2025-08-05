@@ -6,6 +6,7 @@ import QuienesSomos from './pages/QuienesSomos';
 import Contacto from './pages/Contacto';
 import Productos from './pages/Productos';
 import ProductoDetalle from './pages/ProductoDetalle';
+import Carrito from './pages/Carrito';
 
 import MainLayout from './layouts/MainLayout';
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="productos" element={<Productos />} />
         <Route path="productos/categoria/:idCategoria" element={<Productos />} />
         <Route path="productos/:idProducto" element={<ProductoDetalle />} />
+        <Route path="Carrito" element={<Carrito />} />
       </Route>
     </Routes>
   );
