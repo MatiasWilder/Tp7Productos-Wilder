@@ -21,6 +21,7 @@ const ProductoDetalle = () => {
       <p><strong>Precio:</strong> ${producto.price}</p>
       <p><strong>Categoría:</strong> {producto.category}</p>
       <p>{producto.description}</p>
+      <button type="submit">Agregar al carrito</button>
     </div>
   );
 };
