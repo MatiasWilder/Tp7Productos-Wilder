@@ -4,8 +4,6 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-
-// Importar CartProvider
 import { CartProvider } from './context/CartContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
