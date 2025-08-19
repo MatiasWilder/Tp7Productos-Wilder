@@ -3,7 +3,6 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../assets/logo.png';
-import Carrito from '../assets/Carrito.png';
 
 export default function NavBar() {
   const [categorias, setCategorias] = useState([]);
@@ -36,11 +35,6 @@ export default function NavBar() {
         </div>
         <Link to="/quienessomos">Quienes Somos</Link>
         <Link to="/contacto">Contacto</Link>
-        <div className="Carrito">
-        <Link to="/carrito">
-          <img src={Carrito} alt="Carrito TP Ventas" className="Carrito-img" />
-        </Link>
-      </div>
       </ul>
     </div>
   );

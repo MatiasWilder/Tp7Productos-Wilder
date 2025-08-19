@@ -9,23 +9,25 @@ import ProductoDetalle from './pages/ProductoDetalle';
 import Carrito from './pages/Carrito';
 
 import MainLayout from './layouts/MainLayout';
+import CartWidget from './components/CartWidget';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<MainLayout />}>
-        <Route index element={<Home />} />
-        <Route path="quienessomos" element={<QuienesSomos />} />
-        <Route path="contacto" element={<Contacto />} />
-        <Route path="productos" element={<Productos />} />
-        <Route path="productos/categoria/:idCategoria" element={<Productos />} />
-        <Route path="productos/:idProducto" element={<ProductoDetalle />} />
-        <Route path="carrito" element={<Carrito />} />
-      </Route>
-    </Routes>
+    <>
+      <CartWidget /> {}
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<Home />} />
+          <Route path="quienessomos" element={<QuienesSomos />} />
+          <Route path="contacto" element={<Contacto />} />
+          <Route path="productos" element={<Productos />} />
+          <Route path="productos/categoria/:idCategoria" element={<Productos />} />
+          <Route path="productos/:idProducto" element={<ProductoDetalle />} />
+          <Route path="carrito" element={<Carrito />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
 export default App;
-
-
