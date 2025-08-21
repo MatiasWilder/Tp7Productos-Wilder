@@ -8,7 +8,6 @@ const CartWidget = () => {
 
   return (
     <div style={{ position: "fixed", bottom: 20, right: 20, zIndex: 1000 }}>
-      {/* Botón flotante */}
       <button
         className="btn btn-warning rounded-circle shadow"
         style={{ width: "60px", height: "60px", fontSize: "1.5rem" }}
@@ -20,7 +19,6 @@ const CartWidget = () => {
         </span>
       </button>
 
-      {/* Panel desplegable */}
       {open && (
         <div
           style={{
