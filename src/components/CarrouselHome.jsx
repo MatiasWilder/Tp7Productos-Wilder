@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './Carrousel.css';
+import { PropTypes } from "prop-types";
 
 import img2 from '../assets/Home2.jpg';
 import img3 from '../assets/Home3.jpg';
@@ -31,6 +32,11 @@ function Carrousel() {
       </Carousel>
     </div>
   );
+
+  Carrousel.propTypes ={
+
+
+  }
 }
 
 export default Carrousel;

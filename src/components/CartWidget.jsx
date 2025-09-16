@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { PropTypes } from "prop-types";
 
 const CartWidget = () => {
   const { cartItems, removeFromCart, clearCart, getTotal } = useContext(CartContext);
@@ -67,6 +68,12 @@ const CartWidget = () => {
       )}
     </div>
   );
+
+
+  CartWidget.propTypes ={
+
+
+  }
 };
 
 export default CartWidget;

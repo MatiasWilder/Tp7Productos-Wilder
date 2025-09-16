@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './CardProducto.css';
 import { CartContext } from '../context/CartContext';
+import { PropTypes } from "prop-types";
 
 function CardProducto({ producto }) {
   const { addToCart } = useContext(CartContext);
@@ -39,6 +40,11 @@ function CardProducto({ producto }) {
       </div>
     </div>
   );
+
+  CardProducto.propTypes ={
+
+
+  }
 }
 
 export default CardProducto;

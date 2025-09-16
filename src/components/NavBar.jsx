@@ -3,6 +3,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../assets/logo.png';
+import { PropTypes } from "prop-types";
 
 export default function NavBar() {
   const [categorias, setCategorias] = useState([]);
@@ -38,4 +39,10 @@ export default function NavBar() {
       </ul>
     </div>
   );
+
+
+  Navbar.propTypes ={
+
+
+  }
 }
