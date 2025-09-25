@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
-const CartWidget = () => {
+const CartWidget = ({ initialOpen = false }) => {
   const { cartItems, removeFromCart, clearCart, getTotal } = useContext(CartContext);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(initialOpen);
 
   return (
     <div style={{ position: "fixed", bottom: 20, right: 20, zIndex: 1000 }}>
@@ -68,12 +68,10 @@ const CartWidget = () => {
       )}
     </div>
   );
+};
 
-
-  CartWidget.propTypes ={
-
-
-  }
+CartWidget.propTypes = {
+  initialOpen: PropTypes.bool,
 };
 
 export default CartWidget;

@@ -3,9 +3,9 @@ import './Navbar.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../assets/logo.png';
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
-export default function NavBar() {
+export default function NavBar({ links = [] }) {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,10 @@ export default function NavBar() {
         </Link>
       </div>
       <ul className="nav-links">
-        <Link to="/">Home</Link>
+        {links.map((link) => (
+          <Link key={link.href} to={link.href}>{link.label}</Link>
+        ))}
+
         <div className="dropdown">
           <span>Productos ▾</span>
           <div className="dropdown-content">
@@ -34,15 +37,19 @@ export default function NavBar() {
             ))}
           </div>
         </div>
+
         <Link to="/quienessomos">Quienes Somos</Link>
         <Link to="/contacto">Contacto</Link>
       </ul>
     </div>
   );
-
-
-  Navbar.propTypes ={
-
-
-  }
 }
+
+NavBar.propTypes = {
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      href: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired
+    })
+  )
+};

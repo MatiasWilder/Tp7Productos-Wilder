@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './CardProducto.css';
 import { CartContext } from '../context/CartContext';
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 
 function CardProducto({ producto }) {
   const { addToCart } = useContext(CartContext);
@@ -40,11 +40,16 @@ function CardProducto({ producto }) {
       </div>
     </div>
   );
-
-  CardProducto.propTypes ={
-
-
-  }
 }
+
+CardProducto.propTypes = {
+  producto: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    category: PropTypes.string,
+    image: PropTypes.string
+  }).isRequired,
+};
 
 export default CardProducto;
