@@ -1,7 +1,9 @@
+// CartWidget.tsx
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import cartItemShape from "../shapes/cartItemShape";
 
 const CartWidget = ({ initialOpen = false }) => {
   const { cartItems, removeFromCart, clearCart, getTotal } = useContext(CartContext);
@@ -35,6 +37,7 @@ const CartWidget = ({ initialOpen = false }) => {
           }}
         >
           <h5>Carrito</h5>
+
           {cartItems.length === 0 ? (
             <p>El carrito está vacío</p>
           ) : (
@@ -53,7 +56,9 @@ const CartWidget = ({ initialOpen = false }) => {
                   </li>
                 ))}
               </ul>
+
               <p><b>Total:</b> ${getTotal()}</p>
+
               <div className="d-flex justify-content-between">
                 <button className="btn btn-sm btn-outline-danger" onClick={clearCart}>
                   Vaciar

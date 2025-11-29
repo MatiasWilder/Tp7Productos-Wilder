@@ -1,8 +1,10 @@
+// CardProducto.tsx
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './CardProducto.css';
-import { CartContext } from '../context/CartContext';
 import PropTypes from "prop-types";
+import { CartContext } from '../context/CartContext';
+import productShape from "../shapes/productShape";
 
 function CardProducto({ producto }) {
   const { addToCart } = useContext(CartContext);
@@ -13,23 +15,21 @@ function CardProducto({ producto }) {
 
   return (
     <div className="card">
-      <img
-        src={producto.image}
-        alt={producto.title}
-        className="card-img-top"
-      />
+      <img src={producto.image} alt={producto.title} className="card-img-top" />
+
       <div className="p-4">
         <h3>
-          <Link to={`/productos/${producto.id}`}>
-            {producto.title}
-          </Link>
+          <Link to={`/productos/${producto.id}`}>{producto.title}</Link>
         </h3>
+
         <p>${producto.price}</p>
         <p>{producto.category}</p>
+
         <div className="d-flex gap-2">
           <Link className="btn btn-outline-primary btn-sm" to={`/productos/${producto.id}`}>
             Ver más
           </Link>
+
           <button
             className="btn btn-success btn-sm"
             onClick={() => addToCart(producto)}
@@ -43,13 +43,7 @@ function CardProducto({ producto }) {
 }
 
 CardProducto.propTypes = {
-  producto: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    category: PropTypes.string,
-    image: PropTypes.string
-  }).isRequired,
+  producto: productShape.isRequired,
 };
 
 export default CardProducto;
