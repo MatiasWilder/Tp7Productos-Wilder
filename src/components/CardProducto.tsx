@@ -1,12 +1,14 @@
-// CardProducto.tsx
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import './CardProducto.css';
-import PropTypes from "prop-types";
-import { CartContext } from '../context/CartContext';
-import productShape from "../shapes/productShape";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Product } from "../types/Product";
+import { CartContext } from "../context/CartContext";
+import "./CardProducto.css";
 
-function CardProducto({ producto }) {
+interface CardProductoProps {
+  producto: Product;
+}
+
+function CardProducto({ producto }: CardProductoProps) {
   const { addToCart } = useContext(CartContext);
 
   if (!producto) {
@@ -41,9 +43,5 @@ function CardProducto({ producto }) {
     </div>
   );
 }
-
-CardProducto.propTypes = {
-  producto: productShape.isRequired,
-};
 
 export default CardProducto;

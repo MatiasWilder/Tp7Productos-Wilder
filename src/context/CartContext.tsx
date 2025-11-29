@@ -1,11 +1,29 @@
-// CartContext.tsx
 import { createContext, useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import { CartItem } from "../types/CartItem";
+import { Product } from "../types/Product";
 
-export const CartContext = createContext();
+export interface CartContextValue {
+  cartItems: CartItem[];
+  addToCart: (product: Product, quantity?: number) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
+  getTotal: () => number;
+}
 
-export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(() => {
+export const CartContext = createContext<CartContextValue>({
+  cartItems: [],
+  addToCart: () => {},
+  removeFromCart: () => {},
+  clearCart: () => {},
+  getTotal: () => 0
+});
+
+interface ProviderProps {
+  children: React.ReactNode;
+}
+
+export const CartProvider = ({ children }: ProviderProps) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
   });
@@ -14,7 +32,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (product, quantity = 1) => {
+  const addToCart = (product: Product, quantity: number = 1) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
 
@@ -30,8 +48,9 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const removeFromCart = (id) =>
+  const removeFromCart = (id: number) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
 
   const clearCart = () => setCartItems([]);
 
@@ -45,8 +64,4 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-};
-
-CartProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };

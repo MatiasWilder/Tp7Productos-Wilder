@@ -1,13 +1,16 @@
-// CartWidget.tsx
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import cartItemShape from "../shapes/cartItemShape";
 
-const CartWidget = ({ initialOpen = false }) => {
-  const { cartItems, removeFromCart, clearCart, getTotal } = useContext(CartContext);
-  const [open, setOpen] = useState(initialOpen);
+interface CartWidgetProps {
+  initialOpen?: boolean;
+}
+
+const CartWidget = ({ initialOpen = false }: CartWidgetProps) => {
+  const { cartItems, removeFromCart, clearCart, getTotal } =
+    useContext(CartContext);
+
+  const [open, setOpen] = useState<boolean>(initialOpen);
 
   return (
     <div style={{ position: "fixed", bottom: 20, right: 20, zIndex: 1000 }}>
@@ -44,8 +47,13 @@ const CartWidget = ({ initialOpen = false }) => {
             <>
               <ul className="list-unstyled">
                 {cartItems.map((item) => (
-                  <li key={item.id} className="d-flex justify-content-between align-items-center mb-2">
-                    <span>{item.title} x {item.quantity}</span>
+                  <li
+                    key={item.id}
+                    className="d-flex justify-content-between align-items-center mb-2"
+                  >
+                    <span>
+                      {item.title} x {item.quantity}
+                    </span>
                     <span>${item.price * item.quantity}</span>
                     <button
                       className="btn btn-sm btn-danger"
@@ -57,13 +65,19 @@ const CartWidget = ({ initialOpen = false }) => {
                 ))}
               </ul>
 
-              <p><b>Total:</b> ${getTotal()}</p>
+              <p>
+                <b>Total:</b> ${getTotal()}
+              </p>
 
               <div className="d-flex justify-content-between">
                 <button className="btn btn-sm btn-outline-danger" onClick={clearCart}>
                   Vaciar
                 </button>
-                <Link className="btn btn-sm btn-primary" to="/carrito" onClick={() => setOpen(false)}>
+                <Link
+                  className="btn btn-sm btn-primary"
+                  to="/carrito"
+                  onClick={() => setOpen(false)}
+                >
                   Ir al carrito
                 </Link>
               </div>
@@ -73,10 +87,6 @@ const CartWidget = ({ initialOpen = false }) => {
       )}
     </div>
   );
-};
-
-CartWidget.propTypes = {
-  initialOpen: PropTypes.bool,
 };
 
 export default CartWidget;
