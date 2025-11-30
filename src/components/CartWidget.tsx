@@ -6,7 +6,7 @@ interface CartWidgetProps {
   initialOpen?: boolean;
 }
 
-const CartWidget = ({ initialOpen = false }: CartWidgetProps) => {
+export default function CartWidget({ initialOpen = false }: CartWidgetProps) {
   const { cartItems, removeFromCart, clearCart, getTotal } =
     useContext(CartContext);
 
@@ -46,15 +46,14 @@ const CartWidget = ({ initialOpen = false }: CartWidgetProps) => {
           ) : (
             <>
               <ul className="list-unstyled">
-                {cartItems.map((item) => (
+                {cartItems.map(item => (
                   <li
                     key={item.id}
                     className="d-flex justify-content-between align-items-center mb-2"
                   >
-                    <span>
-                      {item.title} x {item.quantity}
-                    </span>
+                    <span>{item.title} x {item.quantity}</span>
                     <span>${item.price * item.quantity}</span>
+
                     <button
                       className="btn btn-sm btn-danger"
                       onClick={() => removeFromCart(item.id)}
@@ -65,9 +64,7 @@ const CartWidget = ({ initialOpen = false }: CartWidgetProps) => {
                 ))}
               </ul>
 
-              <p>
-                <b>Total:</b> ${getTotal()}
-              </p>
+              <p><b>Total:</b> ${getTotal()}</p>
 
               <div className="d-flex justify-content-between">
                 <button className="btn btn-sm btn-outline-danger" onClick={clearCart}>
@@ -87,6 +84,4 @@ const CartWidget = ({ initialOpen = false }: CartWidgetProps) => {
       )}
     </div>
   );
-};
-
-export default CartWidget;
+}

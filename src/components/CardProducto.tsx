@@ -8,7 +8,7 @@ interface CardProductoProps {
   producto: Product;
 }
 
-function CardProducto({ producto }: CardProductoProps) {
+export default function CardProducto({ producto }: CardProductoProps) {
   const { addToCart } = useContext(CartContext);
 
   if (!producto) {
@@ -17,11 +17,17 @@ function CardProducto({ producto }: CardProductoProps) {
 
   return (
     <div className="card">
-      <img src={producto.image} alt={producto.title} className="card-img-top" />
+      <img
+        src={producto.image}
+        alt={producto.title}
+        className="card-img-top"
+      />
 
       <div className="p-4">
         <h3>
-          <Link to={`/productos/${producto.id}`}>{producto.title}</Link>
+          <Link to={`/productos/${producto.id}`}>
+            {producto.title}
+          </Link>
         </h3>
 
         <p>${producto.price}</p>
@@ -43,5 +49,3 @@ function CardProducto({ producto }: CardProductoProps) {
     </div>
   );
 }
-
-export default CardProducto;

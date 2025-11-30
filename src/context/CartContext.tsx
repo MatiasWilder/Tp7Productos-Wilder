@@ -1,8 +1,8 @@
-import { createContext, useState, useEffect } from "react";
-import { CartItem } from "../types/CartItem";
+import { createContext, useEffect, useState } from "react";
 import { Product } from "../types/Product";
+import { CartItem } from "../types/CartItem";
 
-export interface CartContextValue {
+export interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (id: number) => void;
@@ -10,7 +10,7 @@ export interface CartContextValue {
   getTotal: () => number;
 }
 
-export const CartContext = createContext<CartContextValue>({
+export const CartContext = createContext<CartContextType>({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
@@ -18,11 +18,11 @@ export const CartContext = createContext<CartContextValue>({
   getTotal: () => 0
 });
 
-interface ProviderProps {
+interface CartProviderProps {
   children: React.ReactNode;
 }
 
-export const CartProvider = ({ children }: ProviderProps) => {
+export const CartProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const savedCart = localStorage.getItem("cart");
     return savedCart ? JSON.parse(savedCart) : [];
@@ -33,24 +33,19 @@ export const CartProvider = ({ children }: ProviderProps) => {
   }, [cartItems]);
 
   const addToCart = (product: Product, quantity: number = 1) => {
-    setCartItems((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-
+    setCartItems(prev => {
+      const existing = prev.find(i => i.id === product.id);
       if (existing) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
+        return prev.map(i =>
+          i.id === product.id ? { ...i, quantity: i.quantity + quantity } : i
         );
       }
-
       return [...prev, { ...product, quantity }];
     });
   };
 
-  const removeFromCart = (id: number) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  const removeFromCart = (id: number) =>
+    setCartItems(prev => prev.filter(i => i.id !== id));
 
   const clearCart = () => setCartItems([]);
 
